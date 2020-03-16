@@ -1,13 +1,18 @@
 
-h1 {
+h1, .intro {
     text-align: center;
 }
-
+.welcome {
+    clear: both;
+}
 .time {
-
+    float: right;
+    margin-right: 40px;
+    
 }
 .score {
-    width: 20px;
+    float: left;
+    margin-left: 25px;
 }
 
 /* button css
@@ -25,6 +30,6 @@ HTML Code for button: <button class="button">Button</button>
     border-radius: 12px;
   }
 
-  .button:hover {
+  .startBtn:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
