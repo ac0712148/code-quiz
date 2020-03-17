@@ -17,14 +17,20 @@ var scoreEl = document.querySelector(".score");
 var startBtn = document.querySelector(".startBtn");
 var questionEl = document.querySelector(".question");
 var questionTextEl = document.querySelector(".questionText");
-
 var choicesEl = document.querySelector(".choices");
-var lineBreak = document.createElement("hr");
 
+var lineBreak = document.createElement("hr");
 var choiceBtn0 = document.createElement("button");
 var choiceBtn1 = document.createElement("button");
 var choiceBtn2 = document.createElement("button");
 var choiceBtn3 = document.createElement("button");
+
+choiceBtn0.setAttribute("class", "button choiceBtn0");
+choiceBtn1.setAttribute("class", "button choiceBtn1");
+choiceBtn2.setAttribute("class", "button choiceBtn2");
+choiceBtn3.setAttribute("class", "button choiceBtn3");
+
+var answer;
 
 // Variable for number of seconds
 var secondsLeft = 5;
@@ -52,32 +58,66 @@ function startScreen() {
     timeEl.textContent = "Time: ";
 }
 
-function quizScreen() {
-    choiceBtn0.setAttribute("class", "button choiceBtn0");
-    choiceBtn1.setAttribute("class", "button choiceBtn1");
-    choiceBtn2.setAttribute("class", "button choiceBtn2");
-    choiceBtn3.setAttribute("class", "button choiceBtn3");
-    
+function test(){
+    //Loop over questions
     questionTextEl.textContent = questions[0].question;
-    questionEl.append(lineBreak);
+    quizScreen(questions[0],questions[0].answer);
+}
 
-    choiceBtn0.textContent = questions[0].choices[0];
-    choiceBtn1.textContent = questions[0].choices[1];
-    choiceBtn2.textContent = questions[0].choices[2];
-    choiceBtn3.textContent = questions[0].choices[3];
+function quizScreen(arr, answer) {
+    // Loop over choices and answers
+    //answer = questions[0].answer
+    questionEl.append(lineBreak);
+    
+    choiceBtn0.textContent = arr.choices[0];
+    choiceBtn1.textContent = arr.choices[1];
+    choiceBtn2.textContent = arr.choices[2];
+    choiceBtn3.textContent = arr.choices[3];
 
     choicesEl.append(choiceBtn0);
     choicesEl.append(choiceBtn1);
     choicesEl.append(choiceBtn2);
     choicesEl.append(choiceBtn3);
+
+    choiceBtn0.addEventListener("click", function(){
+        if(answer === 0){
+            alert("Correct");
+        }
+        else{
+            alert("Incorrect");
+        }
+    });
+    choiceBtn1.addEventListener("click", function(){
+        if(answer === 1){
+            alert("Correct");
+        }
+        else{
+            alert("Incorrect");
+        }
+    });
+    choiceBtn2.addEventListener("click", function(){
+        if(answer === 2){
+            alert("Correct");
+        }
+        else{
+            alert("Incorrect");
+        }
+    });
+    choiceBtn3.addEventListener("click", function(){
+        if(answer === 3){
+            alert("Correct");
+        }
+        else{
+            alert("Incorrect");
+        }
+    });
 }
 
 startBtn.addEventListener("click", function(){
     startBtn.remove();
     setTimer();
-    quizScreen();
+    test();
 });
-
 
 //Main Logic
 startScreen();
